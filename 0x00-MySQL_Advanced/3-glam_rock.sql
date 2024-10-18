@@ -4,15 +4,15 @@
 --    - band_name
 --    - lifespan
 
-SELECT band_name AS band_name,
-    COALESCE(
+SELECT band_name,
     CASE
+        WHEN formed > 2022 THEN 0
         WHEN split IS NULL THEN 2022 - formed
-        ELSE split - formed
-    END, 0) AS lifespan
-    FROM 
-        metal_bands
-    WHERE
-        style = 'Glam rock'
-    ORDER BY
-        lifespan DESC
+        ELSE GREATEST(split - formed, 0)
+    END  AS lifespan
+FROM 
+    metal_bands
+WHERE
+    style = 'Glam rock'
+ORDER BY
+    lifespan DESC;
