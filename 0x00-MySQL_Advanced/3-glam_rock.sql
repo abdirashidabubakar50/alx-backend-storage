@@ -4,11 +4,16 @@
 --    - band_name
 --    - lifespan
 
-SELECT band_name,
-    (IFNULL(split, 2022) - formed) AS lifespan
-FROM 
+SELECT 
+    band_name,
+        CASE 
+            WHEN formed IS NULL THEN 0 -- No formation year available
+            WHEN split IS NULL THEN 2022 - formed -- Band still active
+            ELSE split - formed -- Band split
+        END AS lifespan
+FROM
     metal_bands
-WHERE
-    style = 'Glam rock'
-ORDER BY
+WHERE 
+    style LIKE '%Glam rock%'
+ORDER BY 
     lifespan DESC;
