@@ -5,11 +5,7 @@
 --    - lifespan
 
 SELECT band_name,
-    CASE
-        WHEN formed > 2022 THEN 0
-        WHEN split IS NULL THEN 2022 - formed
-        ELSE GREATEST(split - formed, 0)
-    END  AS lifespan
+    (IFNULL(split, 2022) - formed) AS lifespan
 FROM 
     metal_bands
 WHERE
