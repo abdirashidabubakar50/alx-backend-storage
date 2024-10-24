@@ -38,3 +38,5 @@ Graph stores use **graph structures** to store, map, and query relationships.
 
 **Multi-modal databases** leverages some conbination of the four types described above and therefore can support a sider range of applications.
 ---
+
+
