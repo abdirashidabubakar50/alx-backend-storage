@@ -1,2 +1,8 @@
-// insert a document in the collection school
-db.my_db.school.insertOne({"name" : "Holberton school"})
+#!/usr/bin/env mongo
+// This script inserts a document into the collection "school".
+
+// Get the database name from the command line arguments
+var dbName = db.getSiblingDB("{{DB_NAME}}");
+
+// Insert the document into the "school" collection
+dbName.school.insertOne({ name: "Holberton school" });
