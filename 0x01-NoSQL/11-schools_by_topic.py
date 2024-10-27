@@ -21,7 +21,7 @@ def schools_by_topic(mongo_collection, topic):
     if mongo_collection is None:
         return
 
-    results = mongo_collection.find_many({"topic": topic})
+    results = mongo_collection.find({"topic": topic})
 
     schools = list(results)
 
