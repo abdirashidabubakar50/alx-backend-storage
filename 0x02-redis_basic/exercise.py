@@ -18,7 +18,7 @@ class Cache:
         creates a redis client instance and flushes the database to remove
         all existing keys
         """
-        self._redis = redis.Redis()
+        self._redis = redis.Redis() # create a redis client
         self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
